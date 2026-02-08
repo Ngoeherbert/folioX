@@ -1141,13 +1141,35 @@
             </span>
           </div>
 
-          <form class="space-y-8 mono text-[10px]">
+          <form
+            action="https://api.web3forms.com/submit"
+            method="post"
+            class="space-y-8 mono text-[10px]"
+          >
             <div class="relative group/input">
+              <input
+                type="hidden"
+                name="access_key"
+                value="85096c65-e7a3-42c2-b3a5-b27a0701b657"
+              />
+              <input
+                type="hidden"
+                name="subject"
+                value="New Submission from Web3Forms"
+              />
+              <input
+                type="checkbox"
+                name="botcheck"
+                id=""
+                style="display: none"
+              />
+
               <label class="text-gray-600 block mb-2 uppercase tracking-widest"
                 >Input.Name</label
               >
               <input
                 type="text"
+                name="name"
                 onfocus="handleInputFocus(this)"
                 class="bg-transparent w-full outline-none text-white border-b border-gray-800 focus:border-[#00FF41] pb-2 transition-all placeholder:text-gray-800"
                 placeholder="TYPE_HERE..."
@@ -1161,6 +1183,8 @@
               >
               <input
                 type="email"
+                name="email"
+                required
                 onfocus="handleInputFocus(this)"
                 class="bg-transparent w-full outline-none text-white border-b border-gray-800 focus:border-[#00FF41] pb-2 transition-all placeholder:text-gray-800"
                 placeholder="USER@DOMAIN.COM"
@@ -1174,6 +1198,8 @@
               <textarea
                 class="bg-transparent w-full outline-none text-white border-b border-gray-800 focus:border-[#00FF41] h-14 resize-none transition-all placeholder:text-gray-800 py-4 leading-none"
                 placeholder="DESCRIBE_PROJECT..."
+                name="message"
+                required
               ></textarea>
             </div>
 
