@@ -1,0 +1,1276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <title>DEV.STUDIO — Frontend Architect</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header
+      class="flex justify-between items-center py-6 px-8 md:px-[10%] bg-black/80 backdrop-blur-xl sticky top-0 z-[100] border-b border-white/5"
+    >
+      <div
+        class="logo mono z-[110] cursor-pointer flex items-center text-sm tracking-tight group"
+      >
+        <span class="text-gray-500 group-hover:text-[#00FF41] transition-colors"
+          >ngoe</span
+        >
+        <span class="text-[#00FF41] mx-0.5">•</span>
+        <span
+          class="text-white font-bold group-hover:translate-x-1 transition-transform"
+          >herbert</span
+        >
+        <span class="ml-2 text-[10px] text-[#00FF41] animate-pulse">_</span>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-x-2">
+        <a
+          href="#hero"
+          class="nav-link group relative mono text-[11px] text-gray-500 hover:text-[#00FF41] transition-colors duration-300"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -left-0"
+            >[</span
+          >
+          <span class="group-[.active]:text-[#00FF41]">01. HOME</span>
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -right-0"
+            >]</span
+          >
+        </a>
+        <a
+          href="#about"
+          class="nav-link group relative mono text-[11px] text-gray-500 hover:text-[#00FF41] transition-colors duration-300"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -left-0"
+            >[</span
+          >
+          <span class="group-[.active]:text-[#00FF41]">02. ABOUT</span>
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -right-0"
+            >]</span
+          >
+        </a>
+        <a
+          href="#portfolio"
+          class="nav-link group relative mono text-[11px] text-gray-500 hover:text-[#00FF41] transition-colors duration-300"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -left-0"
+            >[</span
+          >
+          <span class="group-[.active]:text-[#00FF41]">03. REPO</span>
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -right-0"
+            >]</span
+          >
+        </a>
+        <a
+          href="#testimonials"
+          class="nav-link group relative mono text-[11px] text-gray-500 hover:text-[#00FF41] transition-colors duration-300"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -left-0"
+            >[</span
+          >
+          <span class="group-[.active]:text-[#00FF41]">04. LOGS</span>
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -right-0"
+            >]</span
+          >
+        </a>
+        <a
+          href="#contact"
+          class="nav-link group relative mono text-[11px] text-gray-500 hover:text-[#00FF41] transition-colors duration-300"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -left-0"
+            >[</span
+          >
+          <span class="group-[.active]:text-[#00FF41]">05. PING</span>
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -right-0"
+            >]</span
+          >
+        </a>
+      </nav>
+
+      <div class="flex items-center gap-6">
+        <div
+          class="hidden lg:block mono text-[10px] text-[#00FF41] animate-pulse"
+        >
+          ● DEPLOYMENT_ACTIVE
+        </div>
+
+        <button
+          id="menu-toggle"
+          class="relative w-10 h-10 flex flex-col justify-center items-center z-[110] bg-[#111] border border-white/10 rounded-md lg:hidden"
+        >
+          <div
+            id="line-1"
+            class="w-5 h-[1.5px] bg-gray-400 transition-all duration-300 mb-1.5"
+          ></div>
+          <div
+            id="line-2"
+            class="w-5 h-[1.5px] bg-gray-400 transition-all duration-300"
+          ></div>
+        </button>
+      </div>
+
+      <div
+        id="mobile-nav"
+        class="fixed inset-0 h-screen bg-black flex flex-col items-center justify-center gap-10 -translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)] z-[105] lg:hidden"
+      >
+        <div
+          class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#00FF41]/5 via-transparent to-transparent opacity-50 pointer-events-none"
+        ></div>
+
+        <a
+          href="#hero"
+          class="mobile-link group relative mono text-2xl text-gray-500 hover:text-[#00FF41] transition-all z-10"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -left-10"
+            >[</span
+          >
+          <span class="group-[.active]:text-[#00FF41]">01. HOME</span>
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -right-10"
+            >]</span
+          >
+        </a>
+        <a
+          href="#about"
+          class="mobile-link group relative mono text-2xl text-gray-400 z-10"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -left-10"
+            >[</span
+          >
+          <span class="group-[.active]:text-[#00FF41]">02. ABOUT</span>
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -right-10"
+            >]</span
+          >
+        </a>
+        <a
+          href="#portfolio"
+          class="mobile-link group relative mono text-2xl text-gray-400 z-10"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -left-10"
+            >[</span
+          >
+          <span class="group-[.active]:text-[#00FF41]">03. REPO</span>
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -right-10"
+            >]</span
+          >
+        </a>
+        <a
+          href="#testimonials"
+          class="mobile-link group relative mono text-2xl text-gray-400 z-10"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -left-10"
+            >[</span
+          >
+          <span class="group-[.active]:text-[#00FF41]">04. LOGS </span>
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -right-10"
+            >]</span
+          >
+        </a>
+        <a
+          href="#contact"
+          class="mobile-link group relative mono text-2xl text-gray-400 z-10"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -left-10"
+            >[</span
+          >
+          <span class="group-[.active]:text-[#00FF41]">05. PING</span>
+          <span
+            class="opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all text-[#00FF41] absolute -right-10"
+            >]</span
+          >
+        </a>
+      </div>
+    </header>
+
+    <section
+      id="hero"
+      class="pt-4 flex flex-col items-center text-center lg:items-start lg:text-left min-h-[80vh] lg:min-h-screen sm:min-h-[80vh] justify-center"
+    >
+      <div class="content z-10 flex flex-col items-center lg:items-start">
+        <div class="mono text-accent text-xs mb-2 mt-4">
+          // BUILDING SCALABLE INTERFACES
+        </div>
+        <h1
+          class="text-6xl md:text-8xl font-black mb-4 tracking-tighter leading-none"
+        >
+          FRONTEND <br />
+          <span
+            class="text-transparent"
+            style="-webkit-text-stroke: 1px #ededed"
+            >ENGINEER.</span
+          >
+        </h1>
+        <p class="mono text-gray-500 text-sm max-w-md mb-2 mx-auto lg:mx-0">
+          Specializing in high-performance React applications with responsive
+          design and crafting intuitive UI/UX.
+        </p>
+        <div class="flex flex-col gap-3 mt-2 items-center lg:items-start">
+          <div class="flex gap-4">
+            <a
+              href="#portfolio"
+              class="group relative bg-[#00FF41] text-black font-black px-8 py-4 text-xs uppercase tracking-[0.2em] transition-all hover:scale-105 z-20 overflow-visible"
+            >
+              <span
+                class="relative z-50 transition-all group-hover:tracking-[0.3em]"
+              >
+                View Projects
+              </span>
+
+              <div
+                class="absolute inset-0 bg-[#00FF41] blur-xl opacity-0 group-hover:opacity-50 z-10 transition-opacity pointer-events-none"
+              ></div>
+            </a>
+
+            <a
+              href="/myResume.pdf"
+              download="/myResume.pdf"
+              class="border border-white/30 hover:border-white px-8 py-4 text-xs uppercase tracking-[0.2em] transition-all hover:bg-white hover:text-black z-20"
+            >
+              Resume
+            </a>
+          </div>
+
+          <div
+            class="flex items-center gap-6 z-20 pl-1 mt-8 lg:mt-8 justify-center lg:justify-start"
+          >
+            <a
+              href="https://github.com/Ngoeherbert"
+              target="_blank"
+              class="group flex items-center gap-2 transition-all duration-300"
+            >
+              <img
+                src="https://cdn.simpleicons.org/github/ededed"
+                class="w-6 h-6 group-hover:filter-accent"
+                alt="GitHub"
+              />
+              <span
+                class="mono text-[10px] text-gray-500 group-hover:text-accent"
+                >GITHUB</span
+              >
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/ngoe-herbert-1996ba32a/"
+              target="_blank"
+              class="group flex items-center gap-2 transition-all duration-300"
+            >
+              <svg
+                class="w-6 h-6 fill-[#ededed] group-hover:fill-accent transition-colors"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454C23.204 24 24 23.227 24 22.271V1.729C24 .774 23.204 0 22.225 0z"
+                />
+              </svg>
+              <span
+                class="mono text-[10px] text-gray-500 group-hover:text-accent"
+                >LINKEDIN</span
+              >
+            </a>
+
+            <a
+              href="https://web.facebook.com/kwata.pikin.237/"
+              target="_blank"
+              class="group flex items-center gap-2 transition-all duration-300"
+            >
+              <img
+                src="https://cdn.simpleicons.org/facebook/ededed"
+                class="w-6 h-6 group-hover:filter-accent"
+                alt="Facebook"
+              />
+              <span
+                class="mono text-[10px] text-gray-500 group-hover:text-accent"
+                >Facebook</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visuals hidden lg:block">
+        <div
+          class="code-grid absolute inset-0 p-4 opacity-20 font-mono text-[10px] grid grid-cols-12 md:grid-cols-20 gap-2 leading-none select-none"
+        >
+          <script>
+            (function () {
+              const grid = document.querySelector(".code-grid");
+              for (let i = 0; i < 1000; i++) {
+                const span = document.createElement("span");
+                // Using a lighter gray for the binary bits
+                span.className = "text-gray-400";
+                span.innerText = Math.random() > 0.5 ? "0" : "1";
+                grid.appendChild(span);
+              }
+            })();
+          </script>
+        </div>
+
+        <div class="tech-pill draggable" style="top: 5%; right: 40%">
+          <img
+            src="https://cdn.simpleicons.org/html5/E34F26"
+            class="w-4 h-4"
+            alt=""
+          /><span>HTML5</span>
+        </div>
+
+        <div class="tech-pill draggable" style="top: 15%; right: 45%">
+          <img
+            src="https://cdn.simpleicons.org/javascript/F7DF1E"
+            class="w-4 h-4"
+            alt=""
+          /><span>JavaScript</span>
+        </div>
+        <div class="tech-pill draggable" style="top: 5%; right: 5%">
+          <img
+            src="https://cdn.simpleicons.org/react/61DAFB"
+            class="w-4 h-4"
+            alt=""
+          /><span>React</span>
+        </div>
+        <div class="tech-pill draggable" style="top: 35%; right: 20%">
+          <img
+            src="https://cdn.simpleicons.org/tailwindcss/06B6D4"
+            class="w-4 h-4"
+            alt=""
+          /><span>Tailwind</span>
+        </div>
+        <div class="tech-pill draggable" style="top: 55%; right: 40%">
+          <img
+            src="https://cdn.simpleicons.org/vite/646CFF"
+            class="w-4 h-4"
+            alt=""
+          /><span>Vite</span>
+        </div>
+        <div class="tech-pill draggable" style="top: 65%; right: 10%">
+          <img
+            src="https://cdn.simpleicons.org/git/F05032"
+            class="w-4 h-4"
+            alt=""
+          /><span>Git</span>
+        </div>
+        <div class="tech-pill draggable" style="top: 75%; right: 25%">
+          <img
+            src="https://cdn.simpleicons.org/github/ffffff"
+            class="w-4 h-4"
+            alt=""
+          /><span>GitHub</span>
+        </div>
+        <div class="tech-pill draggable" style="top: 50%; right: 5%">
+          <img
+            src="https://cdn.simpleicons.org/nodedotjs/339933"
+            class="w-4 h-4"
+            alt=""
+          /><span>Node.js</span>
+        </div>
+        <div class="tech-pill draggable" style="top: 27%; right: 50%">
+          <img
+            src="https://cdn.simpleicons.org/mongodb/47A248"
+            class="w-4 h-4"
+            alt=""
+          /><span>MongoDB</span>
+        </div>
+        <div class="tech-pill draggable" style="top: 65%; right: 35%">
+          <img
+            src="https://cdn.simpleicons.org/npm/CB3837"
+            class="w-4 h-4"
+            alt=""
+          /><span>NPM</span>
+        </div>
+        <div class="tech-pill draggable" style="top: 10%; right: 25%">
+          <img
+            src="https://cdn.simpleicons.org/yarn/2C8EBB"
+            class="w-4 h-4"
+            alt=""
+          /><span>Yarn</span>
+        </div>
+
+        <div
+          class="tech-pill draggable border-accent/50"
+          style="top: 40%; right: 45%"
+        >
+          <img
+            src="https://cdn.simpleicons.org/googlegemini/8E75FF"
+            class="w-4 h-4"
+            alt=""
+          /><span>Gemini</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="bg-[#050505] py-32 px-4">
+      <div class="content max-w-6xl mx-auto relative">
+        <div class="flex flex-col lg:flex-row items-start gap-0">
+          <div
+            class="draggable-window w-full lg:w-3/5 bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden shadow-xl relative z-10 transition-all duration-500"
+          >
+            <div
+              class="window-header bg-white/5 p-3 border-b border-white/5 flex gap-1.5"
+            >
+              <div
+                class="w-3 h-3 bg-[#ff5f56] rounded-full shadow-[0_0_10px_rgba(255,95,86,0.2)]"
+              ></div>
+              <div class="w-3 h-3 bg-[#ffbd2e] rounded-full"></div>
+              <div class="w-3 h-3 bg-[#27c93f] rounded-full"></div>
+            </div>
+
+            <div class="p-8 md:p-12 mono text-sm leading-relaxed">
+              <p class="text-accent mb-4">
+                admin@mstudio:~$ <span class="text-white">whoami</span>
+              </p>
+              <p class="text-white text-lg font-bold mb-1">NGOE HERBERT</p>
+              <p class="text-gray-400 mb-6 text-base">
+                I bridge the gap between design and engineering. My focus is on
+                writing clean, maintainable code that doesn't sacrifice
+                aesthetic integrity. I build tools for humans, optimized for
+                machines.
+              </p>
+
+              <div class="mt-8 border-t border-white/5 pt-6">
+                <p class="text-accent mb-2">
+                  admin@mstudio:~$
+                  <span class="text-white">list --services</span>
+                </p>
+
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-8 mt-4"
+                >
+                  <div class="flex items-center gap-2 group">
+                    <span
+                      class="text-[#00FF41] opacity-50 group-hover:opacity-100 transition-opacity"
+                      >→</span
+                    >
+                    <span
+                      class="text-gray-500 group-hover:text-white transition-colors cursor-default"
+                      >Web_App_Development</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-2 group">
+                    <span
+                      class="text-[#00FF41] opacity-50 group-hover:opacity-100 transition-opacity"
+                      >→</span
+                    >
+                    <span
+                      class="text-gray-500 group-hover:text-white transition-colors cursor-default"
+                      >Mobile_App_Development</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-2 group">
+                    <span
+                      class="text-[#00FF41] opacity-50 group-hover:opacity-100 transition-opacity"
+                      >→</span
+                    >
+                    <span
+                      class="text-gray-500 group-hover:text-white transition-colors cursor-default"
+                      >UI/UX_Implementation</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-2 group">
+                    <span
+                      class="text-[#00FF41] opacity-50 group-hover:opacity-100 transition-opacity"
+                      >→</span
+                    >
+                    <span
+                      class="text-gray-500 group-hover:text-white transition-colors cursor-default"
+                      >Website_Development</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-2 group">
+                    <span
+                      class="text-[#00FF41] opacity-50 group-hover:opacity-100 transition-opacity"
+                      >→</span
+                    >
+                    <span
+                      class="text-gray-500 group-hover:text-white transition-colors cursor-default"
+                      >Maintenance_&_Support</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-2 group">
+                    <span
+                      class="text-[#00FF41] opacity-50 group-hover:opacity-100 transition-opacity"
+                      >→</span
+                    >
+                    <span
+                      class="text-gray-500 group-hover:text-white transition-colors cursor-default"
+                      >Performance_Optimization</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="draggable-window w-full lg:w-2/5 mt-8 lg:mt-20 lg:-ml-16 relative z-20"
+          >
+            <div
+              class="browser-frame bg-[#0d0d0d]/90 backdrop-blur-xl border border-accent/20 rounded-lg overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] hover:border-accent/60 transition-all duration-500"
+            >
+              <div
+                class="window-header bg-accent/5 p-3 border-b border-accent/20 flex justify-between items-center px-4"
+              >
+                <div
+                  class="mono text-[9px] text-accent tracking-widest font-bold"
+                >
+                  CORE_STACK.SYS
+                </div>
+                <div class="flex gap-1">
+                  <div class="w-2 h-2 bg-accent/30 rounded-full"></div>
+                </div>
+              </div>
+
+              <div class="p-8">
+                <div class="grid grid-cols-4 gap-y-10 gap-x-2">
+                  <div class="group flex flex-col items-center gap-2">
+                    <img
+                      src="https://cdn.simpleicons.org/react/ededed"
+                      class="w-7 h-7 group-hover:filter-accent transition-all"
+                      alt="React"
+                    />
+                    <span
+                      class="text-[7px] mono text-gray-600 group-hover:text-accent"
+                      >REACT</span
+                    >
+                  </div>
+                  <div class="group flex flex-col items-center gap-2">
+                    <img
+                      src="https://cdn.simpleicons.org/tailwindcss/ededed"
+                      class="w-7 h-7 group-hover:filter-accent transition-all"
+                      alt="Tailwind"
+                    />
+                    <span
+                      class="text-[7px] mono text-gray-600 group-hover:text-accent"
+                      >TAILWIND</span
+                    >
+                  </div>
+                  <div class="group flex flex-col items-center gap-2">
+                    <img
+                      src="https://img.icons8.com/ios-filled/50/ffffff/css3.png"
+                      class="w-7 h-7 group-hover:filter-accent transition-all"
+                      alt="CSS3"
+                    />
+                    <span
+                      class="text-[7px] mono text-gray-600 group-hover:text-accent uppercase"
+                      >CSS3</span
+                    >
+                  </div>
+                  <div class="group flex flex-col items-center gap-2">
+                    <img
+                      src="https://cdn.simpleicons.org/javascript/ededed"
+                      class="w-7 h-7 group-hover:filter-accent transition-all"
+                      alt="JS"
+                    />
+                    <span
+                      class="text-[7px] mono text-gray-600 group-hover:text-accent"
+                      >JS_ES6</span
+                    >
+                  </div>
+                  <div class="group flex flex-col items-center gap-2">
+                    <img
+                      src="https://cdn.simpleicons.org/git/ededed"
+                      class="w-7 h-7 group-hover:filter-accent transition-all"
+                      alt="Git"
+                    />
+                    <span
+                      class="text-[7px] mono text-gray-600 group-hover:text-accent"
+                      >GIT</span
+                    >
+                  </div>
+                  <div class="group flex flex-col items-center gap-2">
+                    <img
+                      src="https://cdn.simpleicons.org/github/ededed"
+                      class="w-7 h-7 group-hover:filter-accent transition-all"
+                      alt="GitHub"
+                    />
+                    <span
+                      class="text-[7px] mono text-gray-600 group-hover:text-accent"
+                      >GITHUB</span
+                    >
+                  </div>
+                  <div class="group flex flex-col items-center gap-2">
+                    <img
+                      src="https://img.icons8.com/ios-filled/50/ffffff/chatgpt.png"
+                      class="w-7 h-7 group-hover:filter-accent transition-all"
+                      alt="ChatGPT"
+                    />
+                    <span
+                      class="text-[7px] mono text-gray-600 group-hover:text-accent uppercase"
+                      >ChatGPT</span
+                    >
+                  </div>
+                  <div class="group flex flex-col items-center gap-2">
+                    <img
+                      src="https://cdn.simpleicons.org/googlegemini/ededed"
+                      class="w-7 h-7 group-hover:filter-accent transition-all"
+                      alt="Gemini"
+                    />
+                    <span
+                      class="text-[7px] mono text-gray-600 group-hover:text-accent"
+                      >GEMINI</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="mt-10 pt-6 border-t border-white/5 flex items-center justify-between"
+                >
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"
+                    ></div>
+                    <span class="mono text-[9px] text-gray-500 uppercase"
+                      >Latency: 24ms</span
+                    >
+                  </div>
+                  <span class="mono text-[9px] text-gray-500 uppercase"
+                    >v3.1.0</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="bg-dark px-4 overflow-hidden scroll-mt-24">
+      <div class="content z-10 w-full max-w-6xl mx-auto">
+        <div class="flex justify-between items-end mb-8 md:mb-12">
+          <h2
+            class="text-3xl md:text-5xl font-bold tracking-tighter uppercase italic"
+          >
+            SELECTED_REPOS
+          </h2>
+          <div class="mono text-[10px] md:text-xs text-gray-600">
+            SORT: BY_IMPACT
+          </div>
+        </div>
+
+        <div
+          id="portfolio-slider"
+          class="flex md:grid flex-nowrap md:flex-wrap overflow-x-auto md:overflow-x-visible snap-x snap-mandatory no-scrollbar md:grid-cols-3 gap-6 md:gap-8 h-auto md:h-[400px] lg:h-[60vh] pb-6 md:pb-0"
+        >
+          <div
+            class="item browser-frame group relative min-w-[85vw] md:min-w-0 h-[350px] md:h-full snap-center overflow-hidden cursor-pointer"
+          >
+            <div class="browser-dots">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+            <div
+              class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+            ></div>
+            <div
+              class="absolute inset-0 bg-black/75 group-hover:bg-black/40 transition-colors duration-300"
+            ></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-6 z-10">
+              <div class="mono">
+                <div class="text-[#00FF41] text-[10px] md:text-xs">
+                  Project_01 // AI_RESUME_BUILDER
+                </div>
+                <div class="text-lg md:text-xl font-bold mb-2 uppercase">
+                  RESUME.
+                </div>
+                <p class="text-sm text-gray-300 leading-snug mb-4 max-w-xs">
+                  AI-powered generator using React, Node, and MongoDB. Features
+                  Redux state management.
+                </p>
+              </div>
+              <div
+                class="flex items-center gap-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+              >
+                <a
+                  href="#"
+                  class="px-4 py-2 text-xs mono border border-white/30 hover:border-[#00FF41] hover:text-[#00FF41] transition"
+                  >VIEW_DEMO</a
+                >
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.5 5.74.5 12.04c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.38-3.87-1.38-.52-1.34-1.27-1.7-1.27-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.2 1.75 1.2 1.02 1.76 2.67 1.25 3.32.95.1-.75.4-1.25.72-1.54-2.55-.3-5.24-1.3-5.24-5.77 0-1.27.45-2.3 1.19-3.11-.12-.3-.52-1.52.11-3.17 0 0 .97-.31 3.18 1.19a10.9 10.9 0 0 1 5.8 0c2.2-1.5 3.17-1.19 3.17-1.19.64 1.65.24 2.87.12 3.17.74.81 1.18 1.84 1.18 3.11 0 4.48-2.7 5.47-5.27 5.76.41.36.78 1.08.78 2.18v3.24c0 .31.21.67.8.56A11.55 11.55 0 0 0 23.5 12C23.5 5.74 18.27.5 12 .5z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="item browser-frame group relative min-w-[85vw] md:min-w-0 h-[350px] md:h-full snap-center overflow-hidden cursor-pointer"
+          >
+            <div class="browser-dots">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+            <div
+              class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+            ></div>
+            <div
+              class="absolute inset-0 bg-black/75 group-hover:bg-black/40 transition-colors"
+            ></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-6 z-10">
+              <div class="mono">
+                <div class="text-[#00FF41] text-[10px] md:text-xs">
+                  Project_02 // AI_SITE_GENERATOR
+                </div>
+                <div class="text-lg md:text-xl font-bold mb-2 uppercase">
+                  SITBUILDER.IO
+                </div>
+                <p class="text-sm text-gray-300 mb-4 max-w-xs">
+                  Built with TS, Prisma, Better Auth, and Shadcn. Dynamic site
+                  generation engine.
+                </p>
+              </div>
+              <div
+                class="flex items-center gap-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+              >
+                <a
+                  href="#"
+                  class="px-4 py-2 text-xs mono border border-white/30 hover:border-[#00FF41] hover:text-[#00FF41] transition"
+                  >DETAILS</a
+                >
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.5 5.74.5 12.04c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.38-3.87-1.38-.52-1.34-1.27-1.7-1.27-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.2 1.75 1.2 1.02 1.76 2.67 1.25 3.32.95.1-.75.4-1.25.72-1.54-2.55-.3-5.24-1.3-5.24-5.77 0-1.27.45-2.3 1.19-3.11-.12-.3-.52-1.52.11-3.17 0 0 .97-.31 3.18 1.19a10.9 10.9 0 0 1 5.8 0c2.2-1.5 3.17-1.19 3.17-1.19.64 1.65.24 2.87.12 3.17.74.81 1.18 1.84 1.18 3.11 0 4.48-2.7 5.47-5.27 5.76.41.36.78 1.08.78 2.18v3.24c0 .31.21.67.8.56A11.55 11.55 0 0 0 23.5 12C23.5 5.74 18.27.5 12 .5z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="item browser-frame group relative min-w-[85vw] md:min-w-0 h-[350px] md:h-full snap-center overflow-hidden cursor-pointer"
+          >
+            <div class="browser-dots">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+            <div
+              class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+            ></div>
+            <div
+              class="absolute inset-0 bg-black/75 group-hover:bg-black/40 transition-colors"
+            ></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-6 z-10">
+              <div class="mono">
+                <div class="text-[#00FF41] text-[10px] md:text-xs">
+                  Project_03 // MOBILE_POS
+                </div>
+                <div class="text-lg md:text-xl font-bold mb-2 uppercase">
+                  INVENTORY_SYSTEM
+                </div>
+                <p class="text-sm text-gray-300 mb-4 max-w-xs">
+                  Mobile app built with React Native, Expo Go, and Zustand for
+                  real-time inventory tracking.
+                </p>
+              </div>
+              <div
+                class="flex items-center gap-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+              >
+                <a
+                  href="#"
+                  class="px-4 py-2 text-xs mono border border-white/30 hover:border-[#00FF41] hover:text-[#00FF41] transition"
+                  >DETAILS</a
+                >
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.5 5.74.5 12.04c0 5.1 3.29 9.43 7.86 10.96.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.38-3.87-1.38-.52-1.34-1.27-1.7-1.27-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.2 1.75 1.2 1.02 1.76 2.67 1.25 3.32.95.1-.75.4-1.25.72-1.54-2.55-.3-5.24-1.3-5.24-5.77 0-1.27.45-2.3 1.19-3.11-.12-.3-.52-1.52.11-3.17 0 0 .97-.31 3.18 1.19a10.9 10.9 0 0 1 5.8 0c2.2-1.5 3.17-1.19 3.17-1.19.64 1.65.24 2.87.12 3.17.74.81 1.18 1.84 1.18 3.11 0 4.48-2.7 5.47-5.27 5.76.41.36.78 1.08.78 2.18v3.24c0 .31.21.67.8.56A11.55 11.55 0 0 0 23.5 12C23.5 5.74 18.27.5 12 .5z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="flex md:hidden justify-center items-center gap-2 mt-8"
+          id="portfolio-indicators"
+        >
+          <div
+            class="p-dot h-1 w-8 bg-[#00FF41] rounded-full transition-all duration-300"
+          ></div>
+          <div
+            class="p-dot h-1 w-4 bg-white/20 rounded-full transition-all duration-300"
+          ></div>
+          <div
+            class="p-dot h-1 w-4 bg-white/20 rounded-full transition-all duration-300"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="testimonials"
+      class="bg-[#050505] py-20 px-4 overflow-hidden scroll-mt-24"
+    >
+      <div class="content z-10 w-full max-w-6xl mx-auto">
+        <div class="mono text-[#00FF41] text-xs mb-8 tracking-widest">
+          // FEEDBACK_LOOP
+        </div>
+
+        <div
+          id="testimonial-slider"
+          class="flex md:grid flex-nowrap md:flex-wrap overflow-x-auto md:overflow-x-visible snap-x snap-mandatory no-scrollbar md:grid-cols-3 gap-6 pb-4 md:pb-0"
+        >
+          <div
+            class="item browser-frame p-8 min-w-[85vw] md:min-w-0 snap-center bg-[#0a0a0a] border border-white/5 flex flex-col justify-between hover:border-[#00FF41]/30 transition-colors duration-300"
+          >
+            <div>
+              <div class="text-[#00FF41] mb-6 text-4xl font-serif leading-none">
+                “
+              </div>
+              <p
+                class="text-sm md:text-base text-gray-400 italic mb-8 leading-relaxed"
+              >
+                Exceptional eye for detail. The motion system implemented in our
+                dashboard significantly improved user engagement metrics.
+              </p>
+            </div>
+            <div class="mono text-[10px] mt-auto">
+              <div class="text-white font-bold tracking-tighter uppercase">
+                CTO @ VECTOR_LABS
+              </div>
+              <div class="text-gray-600 mt-1">Verified_User_01</div>
+            </div>
+          </div>
+
+          <div
+            class="item browser-frame p-8 min-w-[85vw] md:min-w-0 snap-center bg-[#0a0a0a] border border-[#00FF41]/30 flex flex-col justify-between"
+          >
+            <div>
+              <div class="text-[#00FF41] mb-6 text-4xl font-serif leading-none">
+                “
+              </div>
+              <p
+                class="text-sm md:text-base text-gray-400 italic mb-8 leading-relaxed"
+              >
+                M.STUDIO doesn't just write code; they architect experiences.
+                Our site performance increased by 40% after the refactor.
+              </p>
+            </div>
+            <div class="mono text-[10px] mt-auto">
+              <div class="text-white font-bold tracking-tighter uppercase">
+                Lead Designer @ AURA
+              </div>
+              <div class="text-gray-600 mt-1">Verified_User_02</div>
+            </div>
+          </div>
+
+          <div
+            class="item browser-frame p-8 min-w-[85vw] md:min-w-0 snap-center bg-[#0a0a0a] border border-white/5 flex flex-col justify-between hover:border-[#00FF41]/30 transition-colors duration-300"
+          >
+            <div>
+              <div class="text-[#00FF41] mb-6 text-4xl font-serif leading-none">
+                “
+              </div>
+              <p
+                class="text-sm md:text-base text-gray-400 italic mb-8 leading-relaxed"
+              >
+                The cleanest React architecture I've seen in a decade. Truly
+                bridges the gap between design and engineering.
+              </p>
+            </div>
+            <div class="mono text-[10px] mt-auto">
+              <div class="text-white font-bold tracking-tighter uppercase">
+                Senior Dev @ NEXUS
+              </div>
+              <div class="text-gray-600 mt-1">Verified_User_03</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="flex md:hidden justify-center items-center gap-2 mt-8"
+          id="testimonial-indicators"
+        >
+          <div
+            class="indicator-dot h-1 w-8 bg-[#00FF41] rounded-full transition-all duration-300"
+          ></div>
+          <div
+            class="indicator-dot h-1 w-4 bg-white/20 rounded-full transition-all duration-300"
+          ></div>
+          <div
+            class="indicator-dot h-1 w-4 bg-white/20 rounded-full transition-all duration-300"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="contact"
+      class="bg-dark pt-20 pb-24 px-6 scroll-mt-24 overflow-hidden min-h-[900px]"
+    >
+      <div
+        class="content z-10 w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start relative"
+      >
+        <div class="text-center md:text-left mb-8 md:mb-0">
+          <h2
+            class="text-6xl md:text-7xl font-black mb-8 tracking-tighter leading-none uppercase"
+          >
+            GET_IN_ <br /><span class="text-[#00FF41]">TOUCH.</span>
+          </h2>
+          <p
+            class="mono text-gray-500 text-sm md:text-base max-w-sm mb-10 mx-auto md:mx-0 leading-relaxed uppercase"
+          >
+            Available for freelance opportunities and architectural consulting.
+          </p>
+
+          <div class="md:hidden flex justify-center">
+            <button
+              onclick="toggleContactModal(true)"
+              class="w-full max-w-xs py-5 bg-[#00FF41] text-black font-black uppercase tracking-[0.2em] text-xs transition-transform active:scale-95"
+            >
+              INITIALIZE_CHAT.EXE
+            </button>
+          </div>
+
+          <div
+            class="mono space-y-4 text-xs md:text-sm mt-10 inline-block md:block text-left"
+          >
+            <div class="flex gap-6 border-l border-white/10 pl-4">
+              <span class="text-gray-600 w-12">MAIL:</span>
+              <a
+                href="mailto:codewithherbert@gmail.com"
+                class="hover:text-[#00FF41] transition-colors"
+                >codewithherbert@gmail.com</a
+              >
+            </div>
+
+            <div class="flex gap-6 border-l border-white/10 pl-4">
+              <span class="text-gray-600 w-12">CHAT:</span>
+              <a
+                href="https://wa.me/682644275"
+                target="_blank"
+                class="hover:text-[#00FF41] transition-colors"
+                >WhatsApp</a
+              >
+            </div>
+
+            <div class="flex gap-6 border-l border-white/10 pl-4">
+              <span class="text-gray-600 w-12">LOC:</span>
+              <span class="text-gray-400 select-all"
+                >[4.1548° N, 9.2435° E]</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden md:block relative h-[600px] w-full">
+          <div
+            class="draggable-window absolute top-0 left-0 w-full item group transition-all duration-500"
+          >
+            <div
+              class="browser-frame bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 rounded-lg overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)] group-hover:border-[#00FF41]/30 transition-all duration-500"
+            >
+              <div
+                class="window-header flex items-center justify-between px-4 py-3 border-b border-white/5 bg-white/[0.02] cursor-grab active:cursor-grabbing select-none"
+              >
+                <div class="flex gap-2">
+                  <div
+                    class="w-3 h-3 rounded-full bg-[#FF5F56] shadow-[0_0_8px_rgba(255,95,86,0.4)]"
+                  ></div>
+                  <div
+                    class="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-[0_0_8px_rgba(255,189,46,0.2)]"
+                  ></div>
+                  <div
+                    class="w-3 h-3 rounded-full bg-[#27C93F] shadow-[0_0_8px_rgba(39,201,63,0.2)]"
+                  ></div>
+                </div>
+                <div
+                  class="mono text-[10px] text-gray-500 tracking-[0.2em] uppercase"
+                >
+                  Messenger_v1.0.4
+                </div>
+              </div>
+
+              <form
+                action="https://api.web3forms.com/submit"
+                method="post"
+                class="p-8 space-y-8 mono text-xs pointer-events-auto"
+              >
+                <div class="relative group/input">
+                  <input
+                    type="hidden"
+                    name="access_key"
+                    value="85096c65-e7a3-42c2-b3a5-b27a0701b657"
+                  />
+                  <input
+                    type="hidden"
+                    name="subject"
+                    value="New Submission from Web3Forms"
+                  />
+                  <input
+                    type="checkbox"
+                    name="botcheck"
+                    id=""
+                    style="display: none"
+                  />
+                  <label
+                    class="text-gray-600 block mb-3 uppercase tracking-widest"
+                    >Input.Name</label
+                  >
+                  <input
+                    type="text"
+                    name="name"
+                    class="bg-transparent w-full outline-none text-white border-b border-gray-800 focus:border-[#00FF41] pb-2 transition-all placeholder:text-gray-800"
+                    placeholder="TYPE_HERE..."
+                  />
+                </div>
+
+                <div class="relative group/input">
+                  <label
+                    class="text-gray-600 block mb-3 uppercase tracking-widest"
+                    >Input.Email</label
+                  >
+                  <input
+                    type="email"
+                    name="email"
+                    class="bg-transparent w-full outline-none text-white border-b border-gray-800 focus:border-[#00FF41] pb-2 transition-all placeholder:text-gray-800"
+                    placeholder="USER@DOMAIN.COM"
+                    required
+                  />
+                </div>
+
+                <div class="relative group/input">
+                  <label
+                    class="text-gray-600 block mb-3 uppercase tracking-widest"
+                    >Input.Message</label
+                  >
+                  <textarea
+                    name="message"
+                    class="bg-transparent w-full outline-none text-white border-b border-gray-800 focus:border-[#00FF41] h-14 resize-none transition-all placeholder:text-gray-800 py-4 leading-none"
+                    placeholder="DESCRIBE_PROJECT..."
+                    required
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="group relative w-full py-5 border border-[#00FF41]/50 text-[#00FF41] font-bold uppercase tracking-[0.3em] overflow-hidden transition-all hover:bg-[#00FF41] hover:text-black shadow-[0_0_20px_rgba(0,255,65,0.05)] hover:shadow-[0_0_30px_rgba(0,255,65,0.2)]"
+                >
+                  <span class="relative z-10">EXECUTE_SEND</span>
+                </button>
+              </form>
+            </div>
+
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-[#00FF41]/0 via-[#00FF41]/5 to-[#00FF41]/0 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div
+      id="contact-modal"
+      class="fixed inset-0 z-[150] hidden items-center justify-center p-4 md:p-0"
+    >
+      <div
+        class="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        onclick="toggleContactModal(false)"
+      ></div>
+
+      <div
+        id="modal-container"
+        class="relative w-full max-w-lg bg-[#0a0a0a]/95 backdrop-blur-2xl border border-white/10 rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] translate-y-full transition-transform duration-500 overflow-hidden"
+      >
+        <div
+          class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-white/[0.03]"
+        >
+          <div class="flex gap-2">
+            <div
+              class="w-3 h-3 rounded-full bg-[#FF5F56] shadow-[0_0_8px_rgba(255,95,86,0.3)] cursor-pointer"
+              onclick="toggleContactModal(false)"
+            ></div>
+            <div class="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
+            <div class="w-3 h-3 rounded-full bg-[#27C93F]"></div>
+          </div>
+          <div class="mono text-[9px] text-gray-500 tracking-[0.2em] uppercase">
+            System.Terminal.Message
+          </div>
+        </div>
+
+        <div class="p-8 overflow-y-auto no-scrollbar max-h-[80vh]">
+          <div class="flex justify-between items-center mb-10">
+            <span
+              class="mono text-[#00FF41] text-[10px] tracking-[0.3em] animate-pulse"
+            >
+              // INIT_SECURE_CONNECTION
+            </span>
+          </div>
+
+          <form class="space-y-8 mono text-[10px]">
+            <div class="relative group/input">
+              <label class="text-gray-600 block mb-2 uppercase tracking-widest"
+                >Input.Name</label
+              >
+              <input
+                type="text"
+                onfocus="handleInputFocus(this)"
+                class="bg-transparent w-full outline-none text-white border-b border-gray-800 focus:border-[#00FF41] pb-2 transition-all placeholder:text-gray-800"
+                placeholder="TYPE_HERE..."
+                required
+              />
+            </div>
+
+            <div class="relative group/input">
+              <label class="text-gray-600 block mb-2 uppercase tracking-widest"
+                >Input.Email</label
+              >
+              <input
+                type="email"
+                onfocus="handleInputFocus(this)"
+                class="bg-transparent w-full outline-none text-white border-b border-gray-800 focus:border-[#00FF41] pb-2 transition-all placeholder:text-gray-800"
+                placeholder="USER@DOMAIN.COM"
+              />
+            </div>
+
+            <div class="relative group/input">
+              <label class="text-gray-600 block mb-3 uppercase tracking-widest">
+                Input.Message
+              </label>
+              <textarea
+                class="bg-transparent w-full outline-none text-white border-b border-gray-800 focus:border-[#00FF41] h-14 resize-none transition-all placeholder:text-gray-800 py-4 leading-none"
+                placeholder="DESCRIBE_PROJECT..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="group relative w-full py-5 border border-[#00FF41]/50 text-[#00FF41] font-bold uppercase tracking-[0.3em] overflow-hidden transition-all hover:bg-[#00FF41] hover:text-black active:scale-95 active:bg-[#00cc33] active:shadow-[0_0_30px_#00FF41]"
+            >
+              <span class="relative z-10 transition-colors duration-300">
+                EXECUTE_SEND
+              </span>
+
+              <div
+                class="absolute inset-0 bg-white/20 opacity-0 group-active:opacity-100 transition-opacity"
+              ></div>
+            </button>
+          </form>
+
+          <div class="mt-8 text-center">
+            <button
+              onclick="toggleContactModal(false)"
+              class="text-gray-700 hover:text-white mono text-[9px] uppercase tracking-widest transition-colors"
+            >
+              [ Abort_Mission ]
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="bg-dark border-t border-white/5 py-12 px-8 md:px-[10%] mono text-[10px] text-gray-600 flex flex-col md:flex-row justify-between items-center gap-8"
+    >
+      <div class="tracking-widest order-2 md:order-1">
+        &copy; 2026 M.STUDIO &mdash;
+        <span class="text-gray-400">ALL_RIGHTS_RESERVED</span>
+      </div>
+
+      <div
+        class="hidden md:flex flex-wrap justify-center gap-x-8 gap-y-4 order-1 md:order-2"
+      >
+        <a
+          href="https://github.com/Ngoeherbert"
+          target="_blank"
+          class="hover:text-[#00FF41] transition-colors duration-300 flex items-center gap-2 group"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 transition-opacity tracking-tighter text-[#00FF41]"
+            >[</span
+          >
+          GITHUB
+          <span
+            class="opacity-0 group-hover:opacity-100 transition-opacity tracking-tighter text-[#00FF41]"
+            >]</span
+          >
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/ngoe-herbert-1996ba32a/"
+          target="_blank"
+          class="hover:text-[#00FF41] transition-colors duration-300 flex items-center gap-2 group"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 transition-opacity tracking-tighter text-[#00FF41]"
+            >[</span
+          >
+          LINKEDIN
+          <span
+            class="opacity-0 group-hover:opacity-100 transition-opacity tracking-tighter text-[#00FF41]"
+            >]</span
+          >
+        </a>
+
+        <a
+          href="https://web.facebook.com/kwata.pikin.237/"
+          target="_blank"
+          class="hover:text-[#00FF41] transition-colors duration-300 flex items-center gap-2 group"
+        >
+          <span
+            class="opacity-0 group-hover:opacity-100 transition-opacity tracking-tighter text-[#00FF41]"
+            >[</span
+          >
+          Facebook
+          <span
+            class="opacity-0 group-hover:opacity-100 transition-opacity tracking-tighter text-[#00FF41]"
+            >]</span
+          >
+        </a>
+      </div>
+
+      <div class="flex items-center gap-3 order-3">
+        <div class="h-1 w-1 bg-[#00FF41] animate-pulse rounded-full"></div>
+        <div
+          class="text-[#00FF41] opacity-40 hover:opacity-100 transition-opacity cursor-default tracking-widest"
+        >
+          STK: GSAP_TAILWIND_VITE
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
